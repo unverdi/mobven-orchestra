@@ -5,6 +5,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+pnpm-lock.yaml          # ignore any future pnpm lock-files
 
 # Next.js
 .next/
@@ -110,4 +111,4 @@ tmp/
 temp/
 
 # Lock files (we'll use npm)
-package-lock.json
+# package-lock.json       # (optional) ignore npm lock if you prefer unlock builds
