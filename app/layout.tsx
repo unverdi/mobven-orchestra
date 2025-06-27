@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Orchestra - AI-Powered Productivity Platform",
-  description: "Streamline your all business processes with AI agents, workflow automation, and intelligent integrations.",
+  description: "Streamline your business processes with AI agents, workflow automation, and intelligent integrations.",
   keywords: ["AI", "productivity", "automation", "workflow", "agents", "business"],
   authors: [{ name: "Orchestra Team" }],
   creator: "Orchestra",
