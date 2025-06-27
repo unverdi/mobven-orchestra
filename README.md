@@ -1,141 +1,227 @@
-# VaultOS - AI-Powered Productivity Platform
+# Orchestra - AI-Powered Workflow Automation Platform
 
-VaultOS is a modern productivity platform that combines AI agents, workflow automation, and intelligent integrations to streamline your business processes.
+Orchestra is a comprehensive productivity platform that enables teams to automate their workflows using AI agents, integrations, and intelligent automation tools. Built with Next.js 14, TypeScript, and modern web technologies.
 
 ## 🚀 Features
 
+### Core Features
 - **AI Agents**: Create and manage intelligent agents for various tasks
-- **Workflow Automation**: Build complex workflows with visual drag-and-drop interface
-- **Smart Integrations**: Connect with popular tools and services
-- **Real-time Analytics**: Monitor performance and productivity metrics
-- **Team Collaboration**: Work together on projects and workflows
-- **Interactive Chat Assistant**: AI-powered guidance for workflow creation
+- **Workflow Automation**: Design and execute complex workflows
+- **Integrations**: Connect with popular tools (Slack, GitHub, Jira, AWS, etc.)
+- **Analytics Dashboard**: Monitor performance and track metrics
+- **Real-time Collaboration**: Work together with your team in real-time
 
-## 🛠️ Tech Stack
+### Technical Features
+- **Modern Stack**: Next.js 14 with App Router, TypeScript, Tailwind CSS
+- **Responsive Design**: Mobile-first approach with adaptive layouts
+- **Authentication**: Secure user authentication and session management
+- **Component Library**: Built with shadcn/ui components
+- **Performance Optimized**: Fast loading times and smooth interactions
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
+## 🛠️ Technology Stack
+
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui components
 - **Icons**: Lucide React
-- **State Management**: React Hooks
-- **Authentication**: Custom auth system
+- **State Management**: React Hooks, Local Storage
+- **Build Tools**: Turbopack, PostCSS
+- **Code Quality**: ESLint, TypeScript strict mode
 
-## 📋 Prerequisites
+## 📦 Installation
 
-Before running this project, make sure you have the following installed:
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn package manager
 
-- **Node.js** (version 18 or higher)
-- **npm** or **yarn** package manager
-- **Git** for version control
+### Quick Start
 
-## 🚀 Getting Started
+1. **Clone the repository**
+   \`\`\`bash
+   git clone https://github.com/mobven/orchestra.git
+   cd orchestra
+   \`\`\`
 
-### 1. Clone the Repository
+2. **Install dependencies**
+   \`\`\`bash
+   npm install
+   # or
+   yarn install
+   \`\`\`
 
-\`\`\`bash
-git clone <your-repository-url>
-cd vaultos-platform
+3. **Set up environment variables**
+   \`\`\`bash
+   cp .env.example .env.local
+   \`\`\`
+   
+   Configure the following variables in `.env.local`:
+   \`\`\`env
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
+   NEXT_PUBLIC_API_URL=http://localhost:3000/api
+   \`\`\`
+
+4. **Run the development server**
+   \`\`\`bash
+   npm run dev
+   # or
+   yarn dev
+   \`\`\`
+
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🏗️ Project Structure
+
 \`\`\`
-
-### 2. Install Dependencies
-
-\`\`\`bash
-npm install
-# or
-yarn install
-\`\`\`
-
-### 3. Environment Setup
-
-Create a \`.env.local\` file in the root directory and add your environment variables:
-
-\`\`\`env
-# Add your environment variables here
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-\`\`\`
-
-### 4. Run the Development Server
-
-\`\`\`bash
-npm run dev
-# or
-yarn dev
-\`\`\`
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
-
-## 📁 Project Structure
-
-\`\`\`
-vaultos-platform/
+orchestra/
 ├── app/                    # Next.js App Router pages
+│   ├── (auth)/            # Authentication pages
 │   ├── dashboard/         # Dashboard pages
-│   ├── agents/           # AI Agents management
-│   ├── workflows/        # Workflow automation
-│   ├── integrations/     # Third-party integrations
+│   ├── workflows/         # Workflow management
+│   ├── agents/           # AI agent management
+│   ├── integrations/     # Integration settings
 │   ├── analytics/        # Analytics dashboard
-│   └── docs/            # Documentation pages
-├── components/           # Reusable React components
+│   └── globals.css       # Global styles
+├── components/           # Reusable components
 │   ├── ui/              # shadcn/ui components
-│   └── ...              # Custom components
+│   ├── header.tsx       # Navigation header
+│   └── auth-guard.tsx   # Authentication wrapper
 ├── public/              # Static assets
-│   ├── images/          # Image assets
-│   └── ...              # Other static files
-├── lib/                 # Utility functions
-└── hooks/               # Custom React hooks
+│   ├── images/         # Image assets
+│   └── icons/          # Icon files
+├── lib/                # Utility functions
+├── hooks/              # Custom React hooks
+└── types/              # TypeScript type definitions
 \`\`\`
 
-## 🎯 Key Pages
+## 🎯 Key Pages & Features
 
-- **Dashboard** (\`/dashboard\`) - Main overview and metrics
-- **Agents** (\`/agents\`) - Create and manage AI agents
-- **Workflows** (\`/workflows\`) - Build and manage workflows
-- **Integrations** (\`/integrations\`) - Connect external services
-- **Analytics** (\`/analytics\`) - Performance insights
-- **Documentation** (\`/docs\`) - User guides and API docs
+### Landing Page (`/`)
+- Hero section with product overview
+- Feature highlights
+- Pricing information
+- Call-to-action buttons
 
-## 🔧 Available Scripts
+### Authentication (`/login`)
+- Secure login system
+- Session management
+- Protected route handling
 
-- \`npm run dev\` - Start development server
-- \`npm run build\` - Build for production
-- \`npm run start\` - Start production server
-- \`npm run lint\` - Run ESLint
-- \`npm run type-check\` - Run TypeScript type checking
+### Dashboard (`/dashboard`)
+- Overview of workflows and agents
+- Quick actions and shortcuts
+- Performance metrics
+- Recent activity feed
 
-## 🎨 Customization
+### Workflows (`/workflows`)
+- Create and manage workflows
+- Visual workflow builder
+- Execution history
+- Performance analytics
 
-### Styling
-The project uses Tailwind CSS for styling. You can customize the design system by modifying:
-- \`tailwind.config.ts\` - Tailwind configuration
-- \`app/globals.css\` - Global styles
+### AI Agents (`/agents`)
+- Agent creation and configuration
+- Agent templates
+- Performance monitoring
+- Integration settings
 
-### Components
-UI components are built with shadcn/ui. You can:
-- Add new components: \`npx shadcn@latest add [component-name]\`
-- Customize existing components in \`components/ui/\`
+### Integrations (`/integrations`)
+- Connect external services
+- API key management
+- Integration templates
+- Connection status monitoring
+
+### Analytics (`/analytics`)
+- Workflow performance metrics
+- Agent efficiency reports
+- Usage statistics
+- Custom dashboards
+
+## 🔧 Development
+
+### Available Scripts
+
+\`\`\`bash
+# Development
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run type-check   # Run TypeScript checks
+\`\`\`
+
+### Code Style & Standards
+
+- **TypeScript**: Strict mode enabled
+- **ESLint**: Configured for Next.js and React
+- **Prettier**: Code formatting (recommended)
+- **Component Structure**: Functional components with hooks
+- **File Naming**: kebab-case for files, PascalCase for components
+
+### Adding New Features
+
+1. **Create component files** in appropriate directories
+2. **Follow TypeScript** strict typing
+3. **Use shadcn/ui components** when possible
+4. **Implement responsive design** with Tailwind CSS
+5. **Add proper error handling** and loading states
 
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy with zero configuration
 
-### Other Platforms
-The project can be deployed to any platform that supports Next.js:
-- Netlify
-- Railway
-- DigitalOcean App Platform
-- AWS Amplify
+1. **Connect your repository** to Vercel
+2. **Configure environment variables** in Vercel dashboard
+3. **Deploy automatically** on push to main branch
+
+### Manual Deployment
+
+\`\`\`bash
+# Build the application
+npm run build
+
+# Start production server
+npm run start
+\`\`\`
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file with the following variables:
+
+\`\`\`env
+# Application URLs
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+
+# Authentication (if using external auth)
+NEXTAUTH_SECRET=your-secret-key
+NEXTAUTH_URL=http://localhost:3000
+
+# Database (if using database)
+DATABASE_URL=your-database-url
+
+# External API Keys (as needed)
+OPENAI_API_KEY=your-openai-key
+SLACK_API_KEY=your-slack-key
+GITHUB_API_KEY=your-github-key
+\`\`\`
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: \`git checkout -b feature/amazing-feature\`
-3. Commit your changes: \`git commit -m 'Add amazing feature'\`
-4. Push to the branch: \`git push origin feature/amazing-feature\`
-5. Open a Pull Request
+We welcome contributions! Please follow these steps:
+
+1. **Fork the repository**
+2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
+4. **Push to the branch** (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
+
+### Contribution Guidelines
+
+- Follow the existing code style
+- Add TypeScript types for new features
+- Include tests for new functionality
+- Update documentation as needed
+- Ensure responsive design compatibility
 
 ## 📝 License
 
@@ -143,23 +229,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-If you encounter any issues or have questions:
+- **Documentation**: Check our [docs](https://orchestra-docs.vercel.app)
+- **Issues**: Report bugs on [GitHub Issues](https://github.com/mobven/orchestra/issues)
+- **Discussions**: Join our [GitHub Discussions](https://github.com/mobven/orchestra/discussions)
+- **Email**: Contact us at support@mobven.com
 
-1. Check the [Documentation](/docs)
-2. Search existing [Issues](https://github.com/your-repo/issues)
-3. Create a new issue if needed
-4. Contact support at support@vaultos.com
+## 🏢 About Mobven
+
+Orchestra is developed by [Mobven](https://mobven.com), a leading technology company specializing in AI-powered solutions and digital transformation.
 
 ## 🙏 Acknowledgments
 
-- [Next.js](https://nextjs.org/) - The React framework
+- [Next.js](https://nextjs.org/) - The React framework for production
+- [shadcn/ui](https://ui.shadcn.com/) - Beautiful and accessible components
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
-- [Lucide](https://lucide.dev/) - Beautiful icons
+- [Lucide](https://lucide.dev/) - Beautiful & consistent icons
+- [Vercel](https://vercel.com/) - Deployment and hosting platform
 
 ---
 
-Made with ❤️ by the VaultOS Team
-\`\`\`
-
-This README provides comprehensive instructions for running the project locally and includes all the essential information developers need to get started. You can now commit this to your repository!
+**Made with ❤️ by the Mobven Team**

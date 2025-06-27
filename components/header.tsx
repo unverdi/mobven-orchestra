@@ -87,8 +87,8 @@ export function Header({ variant = "landing" }: HeaderProps) {
               >
                 Docs
               </Link>
-              <Link href="/about" className="text-slate-600 hover:text-slate-900 transition-colors">
-                About
+              <Link href="/contact" className="text-slate-600 hover:text-slate-900 transition-colors">
+                Contact
               </Link>
             </nav>
 
@@ -132,8 +132,8 @@ export function Header({ variant = "landing" }: HeaderProps) {
                 >
                   Docs
                 </Link>
-                <Link href="/about" className="text-slate-600 hover:text-slate-900 transition-colors px-4">
-                  About
+                <Link href="/contact" className="text-slate-600 hover:text-slate-900 transition-colors px-4">
+                  Contact
                 </Link>
                 <Button
                   asChild
