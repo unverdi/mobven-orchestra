@@ -6,7 +6,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Lock files - force npm usage only
+# Lock files - FORCE npm usage only
 pnpm-lock.yaml
 yarn.lock
 
