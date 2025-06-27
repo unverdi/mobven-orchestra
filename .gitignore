@@ -263,5 +263,3 @@ docs/.docusaurus/
 .npm/
 .yarn/
 .pnpm/
-
-package-lock.json
