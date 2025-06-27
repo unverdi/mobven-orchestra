@@ -1,16 +1,16 @@
 # Orchestra - AI-Powered Workflow Automation Platform
 
-Orchestra is a comprehensive enterprise automation platform that enables organizations to build, deploy, and manage AI-powered workflows and agents. Built with Next.js 15, TypeScript, and modern web technologies.
+Orchestra is a comprehensive AI-powered workflow automation platform that enables businesses to streamline their processes, integrate various tools, and build intelligent agents for enhanced productivity.
 
 ## 🚀 Features
 
 ### Core Capabilities
-- **AI Agent Builder**: Create custom AI agents with drag-and-drop interface
-- **Workflow Automation**: Design complex workflows with visual editor
-- **Enterprise Integrations**: Connect with 100+ enterprise tools and APIs
-- **Real-time Analytics**: Monitor performance and usage metrics
-- **Multi-tenant Architecture**: Support for multiple organizations
-- **Role-based Access Control**: Granular permissions and security
+- **AI Agents**: Create and manage intelligent agents for various tasks
+- **Workflow Automation**: Design and execute complex workflows
+- **Integrations**: Connect with popular tools and services
+- **Analytics Dashboard**: Monitor performance and insights
+- **SDLC Demo**: Software Development Lifecycle automation
+- **Real-time Collaboration**: Work together seamlessly
 
 ### AI & Machine Learning
 - **Natural Language Processing**: Advanced text analysis and generation
@@ -26,15 +26,16 @@ Orchestra is a comprehensive enterprise automation platform that enables organiz
 - **Data Governance**: Compliance with GDPR, SOC2, and other standards
 - **High Availability**: 99.9% uptime SLA
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS, shadcn/ui components
-- **State Management**: React Hooks, Context API
-- **Authentication**: NextAuth.js
-- **Database**: PostgreSQL, Redis
-- **Deployment**: Vercel, Docker
-- **Monitoring**: Analytics, Error tracking
+- **Framework**: Next.js 15.2.4
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **Icons**: Lucide React
+- **Charts**: Recharts
+- **Forms**: React Hook Form + Zod
+- **Themes**: next-themes
 
 ## 📦 Installation
 
@@ -63,10 +64,14 @@ Orchestra is a comprehensive enterprise automation platform that enables organiz
    
    Edit `.env.local` with your configuration:
    \`\`\`env
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
    NEXTAUTH_URL=http://localhost:3000
    NEXTAUTH_SECRET=your-secret-key
    DATABASE_URL=your-database-url
    REDIS_URL=your-redis-url
+   OPENAI_API_KEY=your-openai-api-key
+   SMTP_HOST=your-smtp-host
+   SMTP_PORT=your-smtp-port
    \`\`\`
 
 4. **Run the development server**
@@ -77,64 +82,63 @@ Orchestra is a comprehensive enterprise automation platform that enables organiz
 5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🏗️ Project Structure
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint issues
+- `npm run type-check` - Run TypeScript type checking
+- `npm run format` - Format code with Prettier
+- `npm run clean` - Clean build artifacts
+
+## 📁 Project Structure
 
 \`\`\`
 orchestra/
 ├── app/                    # Next.js App Router
-│   ├── (auth)/            # Authentication pages
 │   ├── dashboard/         # Dashboard pages
 │   ├── agents/           # AI Agents management
-│   ├── workflows/        # Workflow builder
+│   ├── workflows/        # Workflow automation
 │   ├── integrations/     # Third-party integrations
 │   ├── analytics/        # Analytics and reporting
-│   └── api/              # API routes
-├── components/            # Reusable UI components
-│   ├── ui/               # shadcn/ui components
-│   ├── forms/            # Form components
-│   ├── charts/           # Chart components
-│   └── layout/           # Layout components
-├── lib/                  # Utility functions
-│   ├── auth.ts           # Authentication logic
-│   ├── db.ts             # Database connections
-│   ├── utils.ts          # Helper functions
-│   └── validations.ts    # Zod schemas
-├── hooks/                # Custom React hooks
-├── types/                # TypeScript type definitions
-├── public/               # Static assets
-└── styles/               # Global styles
+│   └── docs/            # Documentation pages
+├── components/           # Reusable components
+│   ├── ui/              # UI components (Radix UI)
+│   └── header.tsx       # Main header component
+├── public/              # Static assets
+└── styles/             # Global styles
 \`\`\`
 
-## 🔧 Configuration
+## 🌟 Key Pages
 
-### Environment Variables
+- **Dashboard** (`/dashboard`) - Main control panel
+- **Agents** (`/agents`) - AI agent management
+- **Workflows** (`/workflows`) - Workflow automation
+- **Integrations** (`/integrations`) - Third-party connections
+- **Analytics** (`/analytics`) - Performance insights
+- **Documentation** (`/docs`) - Comprehensive guides
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `NEXTAUTH_URL` | Application URL | Yes |
-| `NEXTAUTH_SECRET` | NextAuth secret key | Yes |
-| `DATABASE_URL` | PostgreSQL connection string | Yes |
-| `REDIS_URL` | Redis connection string | Yes |
-| `OPENAI_API_KEY` | OpenAI API key for AI features | No |
-| `SMTP_HOST` | Email server host | No |
-| `SMTP_PORT` | Email server port | No |
+## 🎨 UI Components
 
-### Database Setup
+Orchestra uses a comprehensive set of UI components built on Radix UI:
 
-1. **Create PostgreSQL database**
-   \`\`\`sql
-   CREATE DATABASE orchestra;
-   \`\`\`
+- Accordion, Alert Dialog, Avatar
+- Button, Card, Checkbox
+- Dialog, Dropdown Menu, Form
+- Navigation Menu, Popover, Progress
+- Select, Slider, Switch, Tabs
+- Toast, Tooltip, and more
 
-2. **Run migrations**
-   \`\`\`bash
-   npm run db:migrate
-   \`\`\`
+## 🔐 Environment Variables
 
-3. **Seed initial data**
-   \`\`\`bash
-   npm run db:seed
-   \`\`\`
+Create a `.env.local` file with the following variables:
+
+\`\`\`env
+# Add your environment variables here
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+\`\`\`
 
 ## 🚀 Deployment
 
@@ -167,31 +171,6 @@ orchestra/
    \`\`\`bash
    npm start
    \`\`\`
-
-## 📚 API Documentation
-
-### Authentication
-All API endpoints require authentication via JWT tokens or API keys.
-
-### Endpoints
-
-#### Agents
-- `GET /api/agents` - List all agents
-- `POST /api/agents` - Create new agent
-- `GET /api/agents/[id]` - Get agent details
-- `PUT /api/agents/[id]` - Update agent
-- `DELETE /api/agents/[id]` - Delete agent
-
-#### Workflows
-- `GET /api/workflows` - List all workflows
-- `POST /api/workflows` - Create new workflow
-- `GET /api/workflows/[id]` - Get workflow details
-- `PUT /api/workflows/[id]` - Update workflow
-- `POST /api/workflows/[id]/execute` - Execute workflow
-
-#### Analytics
-- `GET /api/analytics/usage` - Get usage statistics
-- `GET /api/analytics/performance` - Get performance metrics
 
 ## 🧪 Testing
 
@@ -248,135 +227,25 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
-
-- **Documentation**: [https://docs.orchestra.mobven.com](https://docs.orchestra.mobven.com)
-- **Issues**: [GitHub Issues](https://github.com/mobven/orchestra/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/mobven/orchestra/discussions)
-- **Email**: support@mobven.com
-
 ## 🏢 About Mobven
 
-Orchestra is developed by [Mobven](https://mobven.com), a leading technology company specializing in AI and automation solutions for enterprises.
+Orchestra is developed by [Mobven](https://mobven.com), a leading technology company specializing in AI-powered solutions and workflow automation.
+
+## 📞 Support
+
+- **Documentation**: [/docs](./docs)
+- **Issues**: [GitHub Issues](https://github.com/mobven/orchestra/issues)
+- **Contact**: [Contact Page](/contact)
+
+## 🔄 Changelog
+
+### v1.0.0
+- Initial release
+- AI Agents management
+- Workflow automation
+- Dashboard and analytics
+- Comprehensive documentation
 
 ---
 
-**Built with ❤️ by the Mobven Team**
-\`\`\`
-
-```plaintext file=".gitignore"
-# Dependencies
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# Next.js
-.next/
-out/
-build/
-dist/
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Vercel
-.vercel
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Logs
-logs
-*.log
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# nyc test coverage
-.nyc_output
-
-# Dependency directories
-jspm_packages/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# next.js build output
-.next
-
-# nuxt.js build output
-.nuxt
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
-
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
-
-# Temporary folders
-tmp/
-temp/
-
-# Lock files (we'll use npm)
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+Made with ❤️ by [Mobven](https://mobven.com)

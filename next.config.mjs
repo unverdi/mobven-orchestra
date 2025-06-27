@@ -9,6 +9,7 @@ const nextConfig = {
         },
       },
     },
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons']
   },
   images: {
     remotePatterns: [
@@ -25,6 +26,7 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com',
       },
     ],
+    domains: ['localhost'],
     formats: ['image/webp', 'image/avif'],
     unoptimized: true, // Added from updates
   },
@@ -68,7 +70,7 @@ const nextConfig = {
     // Custom webpack configuration
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': '.',
+      '@': require('path').resolve(__dirname),
     }
     
     return config

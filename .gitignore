@@ -5,7 +5,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-pnpm-lock.yaml          # ignore any future pnpm lock-files
+
+# Lock files - force npm usage
+pnpm-lock.yaml
+yarn.lock
 
 # Next.js
 .next/
@@ -82,15 +85,6 @@ jspm_packages/
 .cache
 .parcel-cache
 
-# next.js build output
-.next
-
-# nuxt.js build output
-.nuxt
-
-# vuepress build output
-.vuepress/dist
-
 # Serverless directories
 .serverless
 
@@ -109,6 +103,3 @@ jspm_packages/
 # Temporary folders
 tmp/
 temp/
-
-# Lock files (we'll use npm)
-# package-lock.json       # (optional) ignore npm lock if you prefer unlock builds
