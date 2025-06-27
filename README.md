@@ -1,59 +1,57 @@
-# Orchestra - AI-Powered Productivity Platform
+# VaultOS - AI-Powered Productivity Platform
 
-Orchestra is a comprehensive productivity platform that combines AI agents, workflow automation, and intelligent integrations to streamline your business processes.
+VaultOS is a modern productivity platform that combines AI agents, workflow automation, and intelligent integrations to streamline your business processes.
 
 ## 🚀 Features
 
-- **AI Agents**: Create and deploy intelligent agents for various tasks
-- **Workflow Automation**: Build complex workflows with visual editor
+- **AI Agents**: Create and manage intelligent agents for various tasks
+- **Workflow Automation**: Build complex workflows with visual drag-and-drop interface
 - **Smart Integrations**: Connect with popular tools and services
-- **Real-time Analytics**: Monitor performance and optimize processes
+- **Real-time Analytics**: Monitor performance and productivity metrics
 - **Team Collaboration**: Work together on projects and workflows
+- **Interactive Chat Assistant**: AI-powered guidance for workflow creation
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 with App Router
-- **Styling**: Tailwind CSS + shadcn/ui
+- **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
 - **Icons**: Lucide React
-- **Deployment**: Vercel (recommended)
+- **State Management**: React Hooks
+- **Authentication**: Custom auth system
 
 ## 📋 Prerequisites
 
-Before you begin, ensure you have the following installed:
+Before running this project, make sure you have the following installed:
 
-- **Node.js** (version 18.0 or higher)
+- **Node.js** (version 18 or higher)
 - **npm** or **yarn** package manager
 - **Git** for version control
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### 1. Clone the Repository
 
 \`\`\`bash
-git clone https://github.com/your-username/orchestra-platform.git
-cd orchestra-platform
+git clone <your-repository-url>
+cd vaultos-platform
 \`\`\`
 
 ### 2. Install Dependencies
 
-Using npm:
 \`\`\`bash
 npm install
-\`\`\`
-
-Using yarn:
-\`\`\`bash
+# or
 yarn install
 \`\`\`
 
 ### 3. Environment Setup
 
-Create a \`.env.local\` file in the root directory:
+Create a \`.env.local\` file in the root directory and add your environment variables:
 
 \`\`\`env
-# App Configuration
-NEXT_PUBLIC_APP_NAME=Orchestra
+# Add your environment variables here
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 \`\`\`
 
@@ -70,21 +68,32 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the a
 ## 📁 Project Structure
 
 \`\`\`
-orchestra-platform/
+vaultos-platform/
 ├── app/                    # Next.js App Router pages
 │   ├── dashboard/         # Dashboard pages
 │   ├── agents/           # AI Agents management
-│   ├── workflows/        # Workflow builder
+│   ├── workflows/        # Workflow automation
 │   ├── integrations/     # Third-party integrations
 │   ├── analytics/        # Analytics dashboard
 │   └── docs/            # Documentation pages
 ├── components/           # Reusable React components
 │   ├── ui/              # shadcn/ui components
 │   └── ...              # Custom components
-├── lib/                 # Utility functions
 ├── public/              # Static assets
-└── styles/              # Global styles
+│   ├── images/          # Image assets
+│   └── ...              # Other static files
+├── lib/                 # Utility functions
+└── hooks/               # Custom React hooks
 \`\`\`
+
+## 🎯 Key Pages
+
+- **Dashboard** (\`/dashboard\`) - Main overview and metrics
+- **Agents** (\`/agents\`) - Create and manage AI agents
+- **Workflows** (\`/workflows\`) - Build and manage workflows
+- **Integrations** (\`/integrations\`) - Connect external services
+- **Analytics** (\`/analytics\`) - Performance insights
+- **Documentation** (\`/docs\`) - User guides and API docs
 
 ## 🔧 Available Scripts
 
@@ -96,60 +105,31 @@ orchestra-platform/
 
 ## 🎨 Customization
 
-### Theming
-
-The project uses Tailwind CSS with a custom theme. You can modify the theme in:
+### Styling
+The project uses Tailwind CSS for styling. You can customize the design system by modifying:
 - \`tailwind.config.ts\` - Tailwind configuration
-- \`app/globals.css\` - Global styles and CSS variables
+- \`app/globals.css\` - Global styles
 
 ### Components
-
-All UI components are built with shadcn/ui and can be customized in the \`components/ui/\` directory.
+UI components are built with shadcn/ui. You can:
+- Add new components: \`npx shadcn@latest add [component-name]\`
+- Customize existing components in \`components/ui/\`
 
 ## 🚀 Deployment
 
-### Deploy to Vercel (Recommended)
-
+### Vercel (Recommended)
 1. Push your code to GitHub
 2. Connect your repository to Vercel
-3. Deploy with one click
+3. Deploy with zero configuration
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/orchestra-platform)
-
-### Manual Deployment
-
-1. Build the project:
-   \`\`\`bash
-   npm run build
-   \`\`\`
-
-2. Start the production server:
-   \`\`\`bash
-   npm run start
-   \`\`\`
-
-## 🔌 Integrations
-
-Orchestra supports various integrations:
-
-- **Slack** - Team communication
-- **GitHub** - Code repository management
-- **Jira** - Project management
-- **Google Workspace** - Productivity suite
-- **Microsoft 365** - Office suite
-- **Zapier** - Automation platform
-
-## 📖 Documentation
-
-Visit our documentation pages within the app:
-- Getting Started: \`/docs/getting-started\`
-- Agent Builder: \`/docs/agent-builder\`
-- API Reference: \`/docs/api\`
-- Integrations: \`/docs/integrations\`
+### Other Platforms
+The project can be deployed to any platform that supports Next.js:
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
 
 ## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
 
 1. Fork the repository
 2. Create a feature branch: \`git checkout -b feature/amazing-feature\`
@@ -163,19 +143,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Documentation**: [/docs](http://localhost:3000/docs)
-- **Support**: [/support](http://localhost:3000/support)
-- **Contact**: [/contact](http://localhost:3000/contact)
+If you encounter any issues or have questions:
 
-## 🎯 Roadmap
+1. Check the [Documentation](/docs)
+2. Search existing [Issues](https://github.com/your-repo/issues)
+3. Create a new issue if needed
+4. Contact support at support@vaultos.com
 
-- [ ] Advanced AI agent templates
-- [ ] Visual workflow builder with drag-and-drop
-- [ ] Real-time collaboration features
-- [ ] Mobile application
-- [ ] Enterprise SSO integration
-- [ ] Advanced analytics and reporting
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/) - The React framework
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
+- [Lucide](https://lucide.dev/) - Beautiful icons
 
 ---
 
-**Built with ❤️ by the Orchestra Team**
+Made with ❤️ by the VaultOS Team
+\`\`\`
+
+This README provides comprehensive instructions for running the project locally and includes all the essential information developers need to get started. You can now commit this to your repository!
