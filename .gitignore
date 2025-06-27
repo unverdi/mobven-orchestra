@@ -111,5 +111,3 @@ temp/
 
 # Lock files (we'll use npm)
 package-lock.json
-yarn.lock
-pnpm-lock.yaml
