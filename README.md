@@ -55,17 +55,6 @@ Create a \`.env.local\` file in the root directory:
 # App Configuration
 NEXT_PUBLIC_APP_NAME=Orchestra
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-
-# Database (Optional - for future integrations)
-# DATABASE_URL=your_database_url
-
-# AI Services (Optional - for AI features)
-# OPENAI_API_KEY=your_openai_api_key
-# ANTHROPIC_API_KEY=your_anthropic_api_key
-
-# Authentication (Optional - for user management)
-# NEXTAUTH_SECRET=your_nextauth_secret
-# NEXTAUTH_URL=http://localhost:3000
 \`\`\`
 
 ### 4. Run the Development Server
