@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Header } from "@/components/header"
+import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -292,7 +292,7 @@ export default function IntegrationsPage() {
   return (
     <AuthGuard>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 animate-in fade-in duration-500">
-        <Header variant="dashboard" />
+        <Header />
 
         <div className="container mx-auto px-4 py-8 animate-in slide-in-from-bottom-4 duration-700">
           {/* Header */}

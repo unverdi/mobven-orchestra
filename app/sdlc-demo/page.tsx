@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
-import { Header } from "@/components/header"
+import Header from "@/components/header"
 import { AuthGuard } from "@/components/auth-guard"
 import {
   CheckCircle,
@@ -204,7 +204,7 @@ export default function SDLCDemoPage() {
   return (
     <AuthGuard>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/20">
-        <Header variant="dashboard" />
+        <Header />
 
         <div className="p-6 space-y-6">
           {/* Header Section */}

@@ -19,7 +19,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Header } from "@/components/header"
+import Header from "@/components/header"
 import { AuthGuard } from "@/components/auth-guard"
 import Link from "next/link"
 import {
@@ -680,7 +680,7 @@ export default function WorkflowDetailPage() {
   return (
     <AuthGuard>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 animate-in fade-in duration-500">
-        <Header variant="dashboard" />
+        <Header />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 animate-in slide-in-from-bottom-4 duration-700">
           {/* Breadcrumb */}

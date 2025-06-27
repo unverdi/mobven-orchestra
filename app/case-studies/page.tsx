@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { TrendingUp, Building2, ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
-import { Header } from "@/components/header"
+import Header from "@/components/header"
 
 export default function CaseStudiesPage() {
   const caseStudies = [
@@ -80,7 +80,7 @@ export default function CaseStudiesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header variant="landing" />
+      <Header />
 
       {/* Hero Section */}
       <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50">

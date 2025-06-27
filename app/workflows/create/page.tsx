@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
-import { Header } from "@/components/header"
+import Header from "@/components/header"
 import { AuthGuard } from "@/components/auth-guard"
 import Link from "next/link"
 import {
@@ -461,7 +461,7 @@ Would you like me to use one of these names?`
   return (
     <AuthGuard>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30">
-        <Header variant="dashboard" />
+        <Header />
 
         <div className="p-6">
           {/* Breadcrumb */}

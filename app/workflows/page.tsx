@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Header } from "@/components/header"
+import Header from "@/components/header"
 import { AuthGuard } from "@/components/auth-guard"
 import Link from "next/link"
 import {
@@ -527,7 +527,7 @@ Would you like me to use one of these names?`
   return (
     <AuthGuard>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/20">
-        <Header variant="dashboard" />
+        <Header />
 
         {/* Full Screen Chat Modal */}
         {isChatOpen && (

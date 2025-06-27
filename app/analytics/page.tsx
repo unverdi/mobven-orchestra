@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Header } from "@/components/header"
+import Header from "@/components/header"
 import { AuthGuard } from "@/components/auth-guard"
 import {
   BarChart3,
@@ -182,7 +182,7 @@ export default function AnalyticsPage() {
   return (
     <AuthGuard>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/20">
-        <Header variant="dashboard" />
+        <Header />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
           {/* Header Section */}
