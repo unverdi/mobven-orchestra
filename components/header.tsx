@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import {
   DropdownMenu,
@@ -49,7 +49,7 @@ export function Header({ variant = "landing" }: HeaderProps) {
     typeof window !== "undefined"
       ? localStorage.getItem("orchestra_user_email") || "admin@mobven.com"
       : "admin@mobven.com"
-  const userInitials = userEmail ? userEmail.split("@")[0].substring(0, 2).toUpperCase() : "AD"
+  const userInitials = userEmail ? userEmail.split("@")[0].substring(0, 2).toUpperCase() : "U"
 
   const handleLogout = () => {
     localStorage.removeItem("orchestra_login_time")
@@ -87,8 +87,8 @@ export function Header({ variant = "landing" }: HeaderProps) {
               >
                 Docs
               </Link>
-              <Link href="/contact" className="text-slate-600 hover:text-slate-900 transition-colors">
-                Contact
+              <Link href="/about" className="text-slate-600 hover:text-slate-900 transition-colors">
+                About
               </Link>
             </nav>
 
@@ -132,12 +132,12 @@ export function Header({ variant = "landing" }: HeaderProps) {
                 >
                   Docs
                 </Link>
-                <Link href="/contact" className="text-slate-600 hover:text-slate-900 transition-colors px-4">
-                  Contact
+                <Link href="/about" className="text-slate-600 hover:text-slate-900 transition-colors px-4">
+                  About
                 </Link>
                 <Button
                   asChild
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 mx-4"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
                 >
                   <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
                     Get Started
@@ -153,7 +153,7 @@ export function Header({ variant = "landing" }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="w-full px-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/dashboard" className="flex items-center space-x-2">
@@ -276,7 +276,8 @@ export function Header({ variant = "landing" }: HeaderProps) {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                   <Avatar className="h-8 w-8">
-                    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white text-sm font-semibold">
+                    <AvatarImage src="/placeholder.svg" alt="User" />
+                    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white text-sm font-medium">
                       {userInitials}
                     </AvatarFallback>
                   </Avatar>
@@ -285,7 +286,7 @@ export function Header({ variant = "landing" }: HeaderProps) {
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">Orchestra User</p>
+                    <p className="text-sm font-medium leading-none">Admin User</p>
                     <p className="text-xs leading-none text-slate-500">{userEmail}</p>
                   </div>
                 </DropdownMenuLabel>
