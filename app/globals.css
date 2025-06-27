@@ -49,6 +49,16 @@
     overflow-x: hidden;
   }
 
+  /* Force rounded corners on all buttons */
+  button {
+    border-radius: 0.5rem !important;
+  }
+
+  .btn,
+  [role="button"] {
+    border-radius: 0.5rem !important;
+  }
+
   /* Enhanced Select Dropdown Styling */
   select {
     @apply bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-200;
@@ -58,6 +68,7 @@
     background-size: 1.5em 1.5em;
     padding-right: 2.5rem;
     appearance: none;
+    border-radius: 0.5rem !important;
   }
 
   select:hover {
@@ -99,6 +110,7 @@
   input[type="search"],
   textarea {
     @apply bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-200;
+    border-radius: 0.5rem !important;
   }
 
   input[type="text"]:hover,
@@ -277,6 +289,7 @@
     padding-right: 3rem;
     appearance: none;
     min-height: 44px; /* Touch-friendly height */
+    border-radius: 0.75rem !important;
   }
 
   .select-enhanced:hover {
@@ -303,13 +316,14 @@
     @apply bg-blue-100 text-blue-900 font-medium;
   }
 
-  /* Fixed Button Styles - Explicit text color declarations */
+  /* Fixed Button Styles - Explicit text color declarations and rounded corners */
   .btn-stripe-enhanced {
     @apply font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-stripe hover:shadow-stripe-lg;
     background: linear-gradient(135deg, #635bff 0%, #7c75ff 100%) !important;
     color: white !important;
     position: relative;
     overflow: hidden;
+    border-radius: 0.75rem !important;
   }
 
   .btn-stripe-enhanced::before {
@@ -337,6 +351,7 @@
     @apply bg-white border-2 hover:bg-gray-50 font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-stripe hover:shadow-stripe-md;
     border-color: rgba(227, 235, 240, 0.8);
     color: #374151 !important;
+    border-radius: 0.75rem !important;
   }
 
   .btn-stripe-secondary-enhanced:hover {
@@ -516,6 +531,7 @@
   .select-enhanced {
     @apply text-base;
     min-height: 48px; /* Larger touch target on mobile */
+    border-radius: 0.5rem !important;
   }
 
   select option,
@@ -549,6 +565,7 @@
 /* Force white text on primary buttons - Production fix */
 button[class*="bg-gradient-to-r"][class*="purple"] {
   color: white !important;
+  border-radius: 0.5rem !important;
 }
 
 button[class*="bg-gradient-to-r"][class*="purple"]:hover {
@@ -558,6 +575,7 @@ button[class*="bg-gradient-to-r"][class*="purple"]:hover {
 .btn-primary-override {
   background: linear-gradient(135deg, #635bff 0%, #7c75ff 100%) !important;
   color: white !important;
+  border-radius: 0.5rem !important;
 }
 
 .btn-primary-override:hover {
@@ -565,11 +583,22 @@ button[class*="bg-gradient-to-r"][class*="purple"]:hover {
   color: white !important;
 }
 
+/* Force rounded corners on all UI elements */
+* {
+  border-radius: inherit;
+}
+
+/* Specific fixes for common elements */
+.rounded-none {
+  border-radius: 0.375rem !important;
+}
+
 /* Dark mode support for select elements */
 @media (prefers-color-scheme: dark) {
   select,
   .select-enhanced {
     @apply bg-gray-800 border-gray-600 text-white;
+    border-radius: 0.5rem !important;
   }
 
   select option,
