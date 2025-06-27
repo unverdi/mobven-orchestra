@@ -1,4 +1,4 @@
-import { Header } from "@/components/header"
+import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
@@ -82,7 +82,7 @@ export default function FeaturesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <Header variant="landing" />
+      <Header />
 
       <main className="container mx-auto px-4 py-16">
         {/* Hero Section */}
