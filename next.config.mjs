@@ -28,13 +28,13 @@ const nextConfig = {
     ],
     domains: ['localhost'],
     formats: ['image/webp', 'image/avif'],
-    unoptimized: true, // Added from updates
+    unoptimized: true,
   },
   eslint: {
-    ignoreDuringBuilds: true, // Added from updates
+    ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // Added from updates
+    ignoreBuildErrors: true,
   },
   async headers() {
     return [
@@ -67,7 +67,6 @@ const nextConfig = {
     ]
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Custom webpack configuration
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': require('path').resolve(__dirname),

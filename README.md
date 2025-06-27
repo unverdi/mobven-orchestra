@@ -1,48 +1,42 @@
 # Orchestra - AI-Powered Workflow Automation Platform
 
-Orchestra is a comprehensive AI-powered workflow automation platform that enables businesses to streamline their processes, integrate various tools, and build intelligent agents for enhanced productivity.
+Orchestra is a comprehensive AI-powered workflow automation platform that enables businesses to streamline their processes, create intelligent agents, and build sophisticated workflows with ease.
 
 ## 🚀 Features
 
-### Core Capabilities
-- **AI Agents**: Create and manage intelligent agents for various tasks
-- **Workflow Automation**: Design and execute complex workflows
-- **Integrations**: Connect with popular tools and services
-- **Analytics Dashboard**: Monitor performance and insights
-- **SDLC Demo**: Software Development Lifecycle automation
-- **Real-time Collaboration**: Work together seamlessly
+### Core Features
+- **AI Agents**: Create and manage intelligent AI agents for various tasks
+- **Workflow Builder**: Visual workflow designer with drag-and-drop interface
+- **Integration Hub**: Connect with popular tools and services
+- **Analytics Dashboard**: Real-time insights and performance metrics
+- **SDLC Demo**: Software Development Lifecycle automation showcase
 
-### AI & Machine Learning
-- **Natural Language Processing**: Advanced text analysis and generation
-- **Document Processing**: Extract insights from various document formats
-- **Predictive Analytics**: Forecast trends and outcomes
-- **Computer Vision**: Image and video analysis capabilities
-- **Custom Model Integration**: Deploy your own ML models
-
-### Enterprise Features
-- **SSO Integration**: Support for SAML, OAuth, and LDAP
-- **Audit Logging**: Comprehensive activity tracking
-- **API Management**: RESTful APIs with rate limiting
-- **Data Governance**: Compliance with GDPR, SOC2, and other standards
-- **High Availability**: 99.9% uptime SLA
+### Technical Features
+- **Modern Stack**: Built with Next.js 15, React 19, TypeScript
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Component Library**: Radix UI components with shadcn/ui
+- **Authentication**: Secure user authentication system
+- **Real-time Updates**: Live data synchronization
+- **Performance Optimized**: Fast loading and smooth interactions
 
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 15.2.4
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Radix UI
+- **Runtime**: React 19
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS 3.4.17
+- **UI Components**: Radix UI + shadcn/ui
 - **Icons**: Lucide React
+- **Forms**: React Hook Form + Zod validation
 - **Charts**: Recharts
-- **Forms**: React Hook Form + Zod
-- **Themes**: next-themes
+- **Animations**: Tailwind CSS Animate
+- **Package Manager**: npm
 
 ## 📦 Installation
 
 ### Prerequisites
-- Node.js 18.0.0 or higher
-- npm 8.0.0 or higher
-- Git
+- Node.js >= 18.0.0
+- npm >= 8.0.0
 
 ### Quick Start
 
@@ -61,18 +55,7 @@ Orchestra is a comprehensive AI-powered workflow automation platform that enable
    \`\`\`bash
    cp .env.example .env.local
    \`\`\`
-   
-   Edit `.env.local` with your configuration:
-   \`\`\`env
-   NEXT_PUBLIC_APP_URL=http://localhost:3000
-   NEXTAUTH_URL=http://localhost:3000
-   NEXTAUTH_SECRET=your-secret-key
-   DATABASE_URL=your-database-url
-   REDIS_URL=your-redis-url
-   OPENAI_API_KEY=your-openai-api-key
-   SMTP_HOST=your-smtp-host
-   SMTP_PORT=your-smtp-port
-   \`\`\`
+   Edit `.env.local` with your configuration values.
 
 4. **Run the development server**
    \`\`\`bash
@@ -86,79 +69,86 @@ Orchestra is a comprehensive AI-powered workflow automation platform that enable
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
-- `npm run start` - Start production server
+- `npm start` - Start production server
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Fix ESLint issues
 - `npm run type-check` - Run TypeScript type checking
 - `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
 - `npm run clean` - Clean build artifacts
+- `npm run analyze` - Analyze bundle size
 
 ## 📁 Project Structure
 
 \`\`\`
 orchestra/
 ├── app/                    # Next.js App Router
+│   ├── (auth)/            # Authentication routes
 │   ├── dashboard/         # Dashboard pages
 │   ├── agents/           # AI Agents management
-│   ├── workflows/        # Workflow automation
-│   ├── integrations/     # Third-party integrations
-│   ├── analytics/        # Analytics and reporting
-│   └── docs/            # Documentation pages
+│   ├── workflows/        # Workflow builder
+│   ├── integrations/     # Integration hub
+│   ├── analytics/        # Analytics dashboard
+│   ├── docs/            # Documentation
+│   └── globals.css      # Global styles
 ├── components/           # Reusable components
-│   ├── ui/              # UI components (Radix UI)
-│   └── header.tsx       # Main header component
+│   ├── ui/              # UI components (shadcn/ui)
+│   ├── header.tsx       # Navigation header
+│   └── auth-guard.tsx   # Authentication wrapper
 ├── public/              # Static assets
-└── styles/             # Global styles
+│   ├── images/         # Image assets
+│   └── icons/          # Icon files
+├── styles/             # Additional styles
+└── types/              # TypeScript type definitions
 \`\`\`
 
-## 🌟 Key Pages
+## 🎨 Design System
 
-- **Dashboard** (`/dashboard`) - Main control panel
-- **Agents** (`/agents`) - AI agent management
-- **Workflows** (`/workflows`) - Workflow automation
-- **Integrations** (`/integrations`) - Third-party connections
-- **Analytics** (`/analytics`) - Performance insights
-- **Documentation** (`/docs`) - Comprehensive guides
+Orchestra uses a consistent design system built on:
 
-## 🎨 UI Components
+- **Colors**: Custom color palette with dark/light mode support
+- **Typography**: Optimized font hierarchy
+- **Spacing**: Consistent spacing scale
+- **Components**: Reusable UI components
+- **Icons**: Lucide React icon library
+- **Animations**: Smooth transitions and micro-interactions
 
-Orchestra uses a comprehensive set of UI components built on Radix UI:
+## 🔐 Authentication
 
-- Accordion, Alert Dialog, Avatar
-- Button, Card, Checkbox
-- Dialog, Dropdown Menu, Form
-- Navigation Menu, Popover, Progress
-- Select, Slider, Switch, Tabs
-- Toast, Tooltip, and more
+The platform includes a comprehensive authentication system:
 
-## 🔐 Environment Variables
+- User registration and login
+- Protected routes with AuthGuard
+- Session management
+- Role-based access control
 
-Create a `.env.local` file with the following variables:
+## 📊 Analytics & Monitoring
 
-\`\`\`env
-# Add your environment variables here
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-\`\`\`
+Built-in analytics features:
+
+- Real-time dashboard metrics
+- User activity tracking
+- Performance monitoring
+- Custom event tracking
+- Export capabilities
+
+## 🔌 Integrations
+
+Orchestra supports various integrations:
+
+- **Development Tools**: GitHub, GitLab, Jira
+- **Communication**: Slack, Microsoft Teams
+- **Cloud Services**: AWS, Google Cloud, Azure
+- **Databases**: PostgreSQL, MongoDB, Redis
+- **APIs**: RESTful and GraphQL endpoints
 
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
 
 1. **Connect your repository to Vercel**
-2. **Set environment variables in Vercel dashboard**
-3. **Deploy automatically on push to main branch**
-
-### Docker
-
-1. **Build the image**
-   \`\`\`bash
-   docker build -t orchestra .
-   \`\`\`
-
-2. **Run the container**
-   \`\`\`bash
-   docker run -p 3000:3000 orchestra
-   \`\`\`
+2. **Configure environment variables**
+3. **Deploy automatically on push**
 
 ### Manual Deployment
 
@@ -172,22 +162,76 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
    npm start
    \`\`\`
 
+### Docker Deployment
+
+\`\`\`dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+\`\`\`
+
 ## 🧪 Testing
 
-### Unit Tests
 \`\`\`bash
+# Run unit tests
 npm run test
-\`\`\`
 
-### Integration Tests
-\`\`\`bash
+# Run integration tests
 npm run test:integration
+
+# Run e2e tests
+npm run test:e2e
+
+# Generate coverage report
+npm run test:coverage
 \`\`\`
 
-### E2E Tests
-\`\`\`bash
-npm run test:e2e
+## 📈 Performance
+
+Orchestra is optimized for performance:
+
+- **Bundle Size**: Optimized with tree-shaking
+- **Code Splitting**: Automatic route-based splitting
+- **Image Optimization**: Next.js Image component
+- **Caching**: Intelligent caching strategies
+- **CDN**: Static asset delivery via CDN
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create a `.env.local` file:
+
+\`\`\`env
+# Application
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_NAME=Orchestra
+
+# Database
+DATABASE_URL=your_database_url
+
+# Authentication
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# External APIs
+OPENAI_API_KEY=your_openai_key
+ANTHROPIC_API_KEY=your_anthropic_key
 \`\`\`
+
+### Next.js Configuration
+
+The `next.config.mjs` file includes:
+
+- Image optimization settings
+- Security headers
+- Webpack customizations
+- Performance optimizations
 
 ## 🤝 Contributing
 
@@ -195,57 +239,44 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ### Development Workflow
 
-1. **Fork the repository**
-2. **Create a feature branch**
-   \`\`\`bash
-   git checkout -b feature/amazing-feature
-   \`\`\`
-3. **Make your changes**
-4. **Run tests**
-   \`\`\`bash
-   npm run test
-   npm run lint
-   \`\`\`
-5. **Commit your changes**
-   \`\`\`bash
-   git commit -m 'Add amazing feature'
-   \`\`\`
-6. **Push to the branch**
-   \`\`\`bash
-   git push origin feature/amazing-feature
-   \`\`\`
-7. **Open a Pull Request**
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Run the test suite
+6. Submit a pull request
 
 ### Code Style
 
-- Use TypeScript for all new code
+- Use TypeScript for type safety
 - Follow ESLint and Prettier configurations
-- Write tests for new features
-- Update documentation as needed
+- Write meaningful commit messages
+- Add JSDoc comments for functions
+- Use semantic versioning
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🆘 Support
+
+- **Documentation**: [docs.orchestra.mobven.com](https://docs.orchestra.mobven.com)
+- **Issues**: [GitHub Issues](https://github.com/mobven/orchestra/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/mobven/orchestra/discussions)
+- **Email**: support@mobven.com
+
 ## 🏢 About Mobven
 
-Orchestra is developed by [Mobven](https://mobven.com), a leading technology company specializing in AI-powered solutions and workflow automation.
+Orchestra is developed by [Mobven](https://mobven.com), a leading technology company specializing in AI-powered solutions and digital transformation.
 
-## 📞 Support
+## 🙏 Acknowledgments
 
-- **Documentation**: [/docs](./docs)
-- **Issues**: [GitHub Issues](https://github.com/mobven/orchestra/issues)
-- **Contact**: [Contact Page](/contact)
-
-## 🔄 Changelog
-
-### v1.0.0
-- Initial release
-- AI Agents management
-- Workflow automation
-- Dashboard and analytics
-- Comprehensive documentation
+- [Next.js](https://nextjs.org/) - The React framework
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Radix UI](https://radix-ui.com/) - Low-level UI primitives
+- [shadcn/ui](https://ui.shadcn.com/) - Beautiful component library
+- [Lucide](https://lucide.dev/) - Beautiful & consistent icons
 
 ---
 
-Made with ❤️ by [Mobven](https://mobven.com)
+**Made with ❤️ by the Mobven Team**
