@@ -26,12 +26,30 @@ import {
   Activity,
   Zap,
   AlertTriangle,
+  Brain,
+  Bot,
+  User,
+  Send,
+  X,
 } from "lucide-react"
 
 export default function WorkflowsPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const [categoryFilter, setCategoryFilter] = useState("all")
+  const [isChatOpen, setIsChatOpen] = useState(false)
+  const [newMessage, setNewMessage] = useState("")
+  const [isTyping, setIsTyping] = useState(false)
+
+  const [chatMessages, setChatMessages] = useState([
+    {
+      id: 1,
+      type: "bot",
+      message:
+        "🚀 **Welcome to Orchestra Workflow Creator!**\n\nI'm your AI-powered workflow assistant. I can help you create intelligent workflows for:\n\n**💼 Business Process Automation**\n• Employee onboarding and offboarding\n• Approval workflows and document routing\n• Customer support ticket management\n• Invoice processing and payments\n\n**🔧 Development & IT Operations**\n• CI/CD pipeline automation\n• Code review and deployment workflows\n• Infrastructure monitoring and alerts\n• Security compliance checks\n\n**📊 Data & Analytics**\n• Data pipeline automation\n• Report generation and distribution\n• ETL processes and data validation\n• Performance monitoring dashboards\n\n**🎯 Marketing & Sales**\n• Lead nurturing campaigns\n• Social media automation\n• Customer journey workflows\n• Sales pipeline management\n\nWhat type of workflow would you like to create today? Just describe your process and I'll help you build it step by step!",
+      timestamp: "Just now",
+    },
+  ])
 
   const workflows = [
     {
@@ -185,6 +203,47 @@ export default function WorkflowsPage() {
   const totalTasks = workflows.reduce((sum, w) => sum + w.completedTasks, 0)
   const avgEfficiency = Math.round(workflows.reduce((sum, w) => sum + w.efficiency, 0) / workflows.length)
 
+  const openChat = () => {
+    setIsChatOpen(true)
+  }
+
+  const closeChat = () => {
+    setIsChatOpen(false)
+  }
+
+  const sendMessage = () => {
+    if (!newMessage.trim()) return
+
+    const userMessage = {
+      id: chatMessages.length + 1,
+      type: "user",
+      message: newMessage,
+      timestamp: "Just now",
+    }
+
+    setChatMessages((prev) => [...prev, userMessage])
+    setNewMessage("")
+    setIsTyping(true)
+
+    setTimeout(() => {
+      const responses = [
+        "🎯 **Excellent choice!** Let me help you create that workflow.\n\n**Workflow Creation Process:**\n\n📋 **Step 1: Define Your Process**\n• What triggers should start this workflow?\n• What are the main steps involved?\n• Who are the stakeholders and approvers?\n\n🔧 **Step 2: Configure Automation**\n• Which systems need to be integrated?\n• What data needs to be collected or processed?\n• Are there any conditional logic requirements?\n\n⚡ **Step 3: Set Up Monitoring**\n• How should success/failure be measured?\n• What notifications are needed?\n• Who should receive status updates?\n\n**Popular Workflow Templates:**\n• Employee Onboarding (HR)\n• Code Review & Deployment (DevOps)\n• Invoice Processing (Finance)\n• Customer Support Ticket Routing\n• Marketing Campaign Automation\n\nWhich type of workflow interests you most, or would you like to describe a custom process?",
+        "✨ **Great! I can see several automation opportunities.**\n\n**AI-Powered Workflow Suggestions:**\n\n🤖 **Smart Process Automation:**\n• Intelligent document processing and routing\n• Automated decision-making based on business rules\n• Dynamic task assignment and load balancing\n\n🔄 **Integration Capabilities:**\n• Connect with 200+ business applications\n• Real-time data synchronization\n• API-first architecture for custom integrations\n\n📊 **Advanced Analytics:**\n• Process performance monitoring\n• Bottleneck identification and optimization\n• Predictive analytics for resource planning\n\n**Workflow Builder Features:**\n• Drag-and-drop visual designer\n• Pre-built templates and components\n• Version control and rollback capabilities\n• A/B testing for process optimization\n\n**Estimated Benefits:**\n• 60% reduction in manual tasks\n• 40% faster process completion\n• 95% accuracy in automated decisions\n• Real-time visibility into all processes\n\nWould you like me to start building a specific workflow for you?",
+        "🔧 **Workflow Creation in Progress...**\n\n**Phase 1**: Process Analysis ✅\n• Business requirements: Captured\n• Stakeholder mapping: Complete\n• Integration points: Identified\n\n**Phase 2**: Workflow Design ⏳\n• Process flow: 75% complete\n• Automation rules: Configuring\n• Error handling: Setting up\n\n**Phase 3**: Testing & Deployment ⏳\n• Unit testing: Preparing\n• Integration testing: Scheduled\n• Production deployment: Pending\n\n**Workflow Components:**\n• Triggers: 3 configured\n• Actions: 8 automated steps\n• Integrations: 4 systems connected\n• Notifications: 6 stakeholder groups\n\n**Performance Predictions:**\n• Processing time: 85% faster\n• Error reduction: 92% improvement\n• Cost savings: $12,000/month\n• ROI timeline: 3 months\n\nYour workflow is 68% complete. Would you like to review the design or proceed with testing?",
+      ]
+
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)]
+      const botResponse = {
+        id: chatMessages.length + 2,
+        type: "bot",
+        message: randomResponse,
+        timestamp: "Just now",
+      }
+      setChatMessages((prev) => [...prev, botResponse])
+      setIsTyping(false)
+    }, 2500)
+  }
+
   return (
     <AuthGuard>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/20">
@@ -204,7 +263,7 @@ export default function WorkflowsPage() {
                 <Activity className="w-4 h-4 mr-1" />
                 {activeWorkflows} Active
               </Badge>
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+              <Button onClick={openChat} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
                 <Plus className="w-4 h-4 mr-2" />
                 Create Workflow
               </Button>
@@ -422,6 +481,107 @@ export default function WorkflowsPage() {
             </Card>
           )}
         </div>
+
+        {/* Chat Modal */}
+        {isChatOpen && (
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+            <div className="w-full max-w-4xl h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden border-0">
+              {/* Chat Header */}
+              <div className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 border-b border-blue-200/20 backdrop-blur-md p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg ring-4 ring-blue-100/50">
+                      <Brain className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Workflow Creator AI
+                      </h2>
+                      <p className="text-slate-600 text-sm">Create intelligent workflows with AI assistance</p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="outline"
+                    onClick={closeChat}
+                    className="bg-white/80 hover:bg-white border-blue-200/50 h-8 w-8 p-0 rounded-full"
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Chat Messages */}
+              <div className="flex-1 overflow-y-auto p-6 space-y-4 h-[calc(80vh-200px)] bg-white">
+                {chatMessages.map((msg) => (
+                  <div key={msg.id} className={`flex gap-4 ${msg.type === "user" ? "justify-end" : "justify-start"}`}>
+                    {msg.type === "bot" && (
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <Bot className="w-5 h-5 text-white" />
+                      </div>
+                    )}
+                    <div
+                      className={`max-w-[70%] p-4 rounded-2xl shadow-lg backdrop-blur-sm ${
+                        msg.type === "user"
+                          ? "bg-gradient-to-br from-blue-600 via-purple-600 to-blue-700 text-white ml-auto"
+                          : "bg-white border border-slate-200/50 text-slate-900"
+                      }`}
+                    >
+                      <p className="text-sm leading-relaxed whitespace-pre-line font-medium">{msg.message}</p>
+                      <p className={`text-xs mt-2 ${msg.type === "user" ? "text-blue-100" : "text-slate-500"}`}>
+                        {msg.timestamp}
+                      </p>
+                    </div>
+                    {msg.type === "user" && (
+                      <div className="w-10 h-10 bg-gradient-to-br from-slate-600 to-slate-700 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <User className="w-5 h-5 text-white" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {isTyping && (
+                  <div className="flex gap-4 justify-start">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                      <Bot className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="bg-white border border-slate-200/50 p-4 rounded-2xl shadow-lg backdrop-blur-sm">
+                      <div className="flex space-x-2">
+                        <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-bounce"></div>
+                        <div
+                          className="w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-bounce"
+                          style={{ animationDelay: "0.1s" }}
+                        ></div>
+                        <div
+                          className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-bounce"
+                          style={{ animationDelay: "0.2s" }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Chat Input */}
+              <div className="p-6 border-t border-blue-200/20 bg-gradient-to-r from-blue-50/30 via-white/50 to-purple-50/30 backdrop-blur-md">
+                <div className="flex gap-4">
+                  <Input
+                    placeholder="Describe the workflow you want to create (e.g., 'Employee onboarding process' or 'Code deployment pipeline')..."
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    onKeyPress={(e) => e.key === "Enter" && sendMessage()}
+                    className="flex-1 h-12 text-sm shadow-lg border-blue-200/30 rounded-xl bg-white/80 backdrop-blur-sm"
+                  />
+                  <Button
+                    onClick={sendMessage}
+                    className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white shadow-lg px-6 h-12 rounded-xl"
+                  >
+                    <Send className="w-4 h-4 mr-2" />
+                    Send
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </AuthGuard>
   )
