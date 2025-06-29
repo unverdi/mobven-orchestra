@@ -213,7 +213,7 @@ export function Header({ variant = "landing" }: HeaderProps) {
                   Create
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuContent align="end" className="w-48 bg-white border shadow-lg z-[200]">
                 <DropdownMenuItem asChild>
                   <Link href="/workflows/create">
                     <GitBranch className="w-4 h-4 mr-2" />
@@ -244,7 +244,7 @@ export function Header({ variant = "landing" }: HeaderProps) {
                   </Badge>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-80">
+              <DropdownMenuContent align="end" className="w-80 bg-white border shadow-lg z-[200]">
                 <DropdownMenuLabel>Notifications</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
@@ -283,7 +283,7 @@ export function Header({ variant = "landing" }: HeaderProps) {
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuContent className="w-56 bg-white border shadow-lg z-[200]" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
                     <p className="text-sm font-medium leading-none">Orchestra User</p>
