@@ -957,7 +957,7 @@ export default function WorkflowDetailPage() {
                                 {getStatusIcon(step.status)}
                                 <span className="ml-1 capitalize">{step.status}</span>
                               </Badge>
-                              <Dialog>
+                              <Dialog open={!!editingStep} onOpenChange={(open) => !open && setEditingStep(null)}>
                                 <DialogTrigger asChild>
                                   <Button
                                     variant="outline"
@@ -968,230 +968,225 @@ export default function WorkflowDetailPage() {
                                     <Edit className="w-4 h-4" />
                                   </Button>
                                 </DialogTrigger>
-                                <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white shadow-2xl border-0 rounded-3xl z-[9999] fixed">
-                                  <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-[9998]" />
-                                  <div className="relative z-[9999] bg-white rounded-3xl shadow-2xl">
-                                    <DialogHeader className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-t-3xl border-b">
-                                      <DialogTitle className="text-2xl font-bold text-slate-900">
-                                        Edit Step: {step.name}
-                                      </DialogTitle>
-                                      <DialogDescription className="text-slate-600 text-lg">
-                                        Configure step parameters, conditions, and behavior settings
-                                      </DialogDescription>
-                                    </DialogHeader>
-                                    <div className="p-8 space-y-8">
-                                      {/* Basic Settings */}
-                                      <div className="space-y-6">
-                                        <h3 className="text-lg font-semibold text-slate-900 border-b pb-2">
-                                          Basic Settings
-                                        </h3>
-                                        <div className="grid grid-cols-2 gap-6">
-                                          <div>
-                                            <Label htmlFor="step-name" className="text-sm font-medium">
-                                              Step Name
-                                            </Label>
-                                            <Input
-                                              id="step-name"
-                                              value={stepSettings.name}
-                                              onChange={(e) =>
-                                                setStepSettings({ ...stepSettings, name: e.target.value })
-                                              }
-                                              className="mt-2"
-                                              placeholder="Enter step name"
-                                            />
-                                          </div>
-                                          <div>
-                                            <Label htmlFor="step-timeout" className="text-sm font-medium">
-                                              Timeout (seconds)
-                                            </Label>
-                                            <Input
-                                              id="step-timeout"
-                                              type="number"
-                                              value={stepSettings.timeout}
-                                              onChange={(e) =>
-                                                setStepSettings({
-                                                  ...stepSettings,
-                                                  timeout: Number.parseInt(e.target.value),
-                                                })
-                                              }
-                                              className="mt-2"
-                                              placeholder="300"
-                                            />
-                                          </div>
+                                <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-white shadow-2xl border-0 rounded-2xl">
+                                  <DialogHeader className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-t-2xl border-b">
+                                    <DialogTitle className="text-xl font-bold text-slate-900">
+                                      Edit Step: {step.name}
+                                    </DialogTitle>
+                                    <DialogDescription className="text-slate-600">
+                                      Configure step parameters, conditions, and behavior settings
+                                    </DialogDescription>
+                                  </DialogHeader>
+                                  <div className="p-6 space-y-6">
+                                    {/* Basic Settings */}
+                                    <div className="space-y-4">
+                                      <h3 className="text-lg font-semibold text-slate-900 border-b pb-2">
+                                        Basic Settings
+                                      </h3>
+                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                          <Label htmlFor="step-name" className="text-sm font-medium">
+                                            Step Name
+                                          </Label>
+                                          <Input
+                                            id="step-name"
+                                            value={stepSettings.name}
+                                            onChange={(e) => setStepSettings({ ...stepSettings, name: e.target.value })}
+                                            className="mt-2"
+                                            placeholder="Enter step name"
+                                          />
                                         </div>
                                         <div>
-                                          <Label htmlFor="step-description" className="text-sm font-medium">
-                                            Description
+                                          <Label htmlFor="step-timeout" className="text-sm font-medium">
+                                            Timeout (seconds)
                                           </Label>
-                                          <Textarea
-                                            id="step-description"
-                                            value={stepSettings.description}
+                                          <Input
+                                            id="step-timeout"
+                                            type="number"
+                                            value={stepSettings.timeout}
                                             onChange={(e) =>
-                                              setStepSettings({ ...stepSettings, description: e.target.value })
+                                              setStepSettings({
+                                                ...stepSettings,
+                                                timeout: Number.parseInt(e.target.value),
+                                              })
                                             }
                                             className="mt-2"
-                                            rows={3}
-                                            placeholder="Describe what this step does"
+                                            placeholder="300"
                                           />
                                         </div>
                                       </div>
+                                      <div>
+                                        <Label htmlFor="step-description" className="text-sm font-medium">
+                                          Description
+                                        </Label>
+                                        <Textarea
+                                          id="step-description"
+                                          value={stepSettings.description}
+                                          onChange={(e) =>
+                                            setStepSettings({ ...stepSettings, description: e.target.value })
+                                          }
+                                          className="mt-2"
+                                          rows={2}
+                                          placeholder="Describe what this step does"
+                                        />
+                                      </div>
+                                    </div>
 
-                                      {/* Retry Settings */}
-                                      <div className="space-y-6">
-                                        <h3 className="text-lg font-semibold text-slate-900 border-b pb-2">
-                                          Retry Settings
-                                        </h3>
-                                        <div className="grid grid-cols-2 gap-6">
-                                          <div>
-                                            <Label htmlFor="retry-attempts" className="text-sm font-medium">
-                                              Retry Attempts
-                                            </Label>
-                                            <Input
-                                              id="retry-attempts"
-                                              type="number"
-                                              value={stepSettings.retryAttempts}
-                                              onChange={(e) =>
-                                                setStepSettings({
-                                                  ...stepSettings,
-                                                  retryAttempts: Number.parseInt(e.target.value),
-                                                })
-                                              }
-                                              className="mt-2"
-                                              placeholder="3"
-                                            />
-                                          </div>
-                                          <div>
-                                            <Label htmlFor="retry-delay" className="text-sm font-medium">
-                                              Retry Delay (seconds)
-                                            </Label>
-                                            <Input
-                                              id="retry-delay"
-                                              type="number"
-                                              value={stepSettings.retryDelay}
-                                              onChange={(e) =>
-                                                setStepSettings({
-                                                  ...stepSettings,
-                                                  retryDelay: Number.parseInt(e.target.value),
-                                                })
-                                              }
-                                              className="mt-2"
-                                              placeholder="30"
-                                            />
-                                          </div>
+                                    {/* Retry Settings */}
+                                    <div className="space-y-4">
+                                      <h3 className="text-lg font-semibold text-slate-900 border-b pb-2">
+                                        Retry Settings
+                                      </h3>
+                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                          <Label htmlFor="retry-attempts" className="text-sm font-medium">
+                                            Retry Attempts
+                                          </Label>
+                                          <Input
+                                            id="retry-attempts"
+                                            type="number"
+                                            value={stepSettings.retryAttempts}
+                                            onChange={(e) =>
+                                              setStepSettings({
+                                                ...stepSettings,
+                                                retryAttempts: Number.parseInt(e.target.value),
+                                              })
+                                            }
+                                            className="mt-2"
+                                            placeholder="3"
+                                          />
+                                        </div>
+                                        <div>
+                                          <Label htmlFor="retry-delay" className="text-sm font-medium">
+                                            Retry Delay (seconds)
+                                          </Label>
+                                          <Input
+                                            id="retry-delay"
+                                            type="number"
+                                            value={stepSettings.retryDelay}
+                                            onChange={(e) =>
+                                              setStepSettings({
+                                                ...stepSettings,
+                                                retryDelay: Number.parseInt(e.target.value),
+                                              })
+                                            }
+                                            className="mt-2"
+                                            placeholder="30"
+                                          />
                                         </div>
                                       </div>
+                                    </div>
 
-                                      {/* Conditions */}
-                                      <div className="space-y-6">
-                                        <h3 className="text-lg font-semibold text-slate-900 border-b pb-2">
-                                          Execution Conditions
-                                        </h3>
-                                        <div className="grid grid-cols-3 gap-6">
-                                          <div>
-                                            <Label htmlFor="on-success" className="text-sm font-medium">
-                                              On Success
-                                            </Label>
-                                            <Select
-                                              value={stepSettings.conditions.onSuccess}
-                                              onValueChange={(value) =>
-                                                setStepSettings({
-                                                  ...stepSettings,
-                                                  conditions: { ...stepSettings.conditions, onSuccess: value },
-                                                })
-                                              }
-                                            >
-                                              <SelectTrigger className="mt-2">
-                                                <SelectValue />
-                                              </SelectTrigger>
-                                              <SelectContent>
-                                                <SelectItem value="continue">Continue</SelectItem>
-                                                <SelectItem value="stop">Stop</SelectItem>
-                                                <SelectItem value="skip_next">Skip Next</SelectItem>
-                                              </SelectContent>
-                                            </Select>
-                                          </div>
-                                          <div>
-                                            <Label htmlFor="on-failure" className="text-sm font-medium">
-                                              On Failure
-                                            </Label>
-                                            <Select
-                                              value={stepSettings.conditions.onFailure}
-                                              onValueChange={(value) =>
-                                                setStepSettings({
-                                                  ...stepSettings,
-                                                  conditions: { ...stepSettings.conditions, onFailure: value },
-                                                })
-                                              }
-                                            >
-                                              <SelectTrigger className="mt-2">
-                                                <SelectValue />
-                                              </SelectTrigger>
-                                              <SelectContent>
-                                                <SelectItem value="retry">Retry</SelectItem>
-                                                <SelectItem value="fail">Fail</SelectItem>
-                                                <SelectItem value="continue">Continue</SelectItem>
-                                                <SelectItem value="manual_review">Manual Review</SelectItem>
-                                              </SelectContent>
-                                            </Select>
-                                          </div>
-                                          <div>
-                                            <Label htmlFor="on-timeout" className="text-sm font-medium">
-                                              On Timeout
-                                            </Label>
-                                            <Select
-                                              value={stepSettings.conditions.onTimeout}
-                                              onValueChange={(value) =>
-                                                setStepSettings({
-                                                  ...stepSettings,
-                                                  conditions: { ...stepSettings.conditions, onTimeout: value },
-                                                })
-                                              }
-                                            >
-                                              <SelectTrigger className="mt-2">
-                                                <SelectValue />
-                                              </SelectTrigger>
-                                              <SelectContent>
-                                                <SelectItem value="fail">Fail</SelectItem>
-                                                <SelectItem value="retry">Retry</SelectItem>
-                                                <SelectItem value="escalate">Escalate</SelectItem>
-                                                <SelectItem value="continue">Continue</SelectItem>
-                                              </SelectContent>
-                                            </Select>
-                                          </div>
+                                    {/* Conditions */}
+                                    <div className="space-y-4">
+                                      <h3 className="text-lg font-semibold text-slate-900 border-b pb-2">
+                                        Execution Conditions
+                                      </h3>
+                                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div>
+                                          <Label htmlFor="on-success" className="text-sm font-medium">
+                                            On Success
+                                          </Label>
+                                          <Select
+                                            value={stepSettings.conditions.onSuccess}
+                                            onValueChange={(value) =>
+                                              setStepSettings({
+                                                ...stepSettings,
+                                                conditions: { ...stepSettings.conditions, onSuccess: value },
+                                              })
+                                            }
+                                          >
+                                            <SelectTrigger className="mt-2">
+                                              <SelectValue />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                              <SelectItem value="continue">Continue</SelectItem>
+                                              <SelectItem value="stop">Stop</SelectItem>
+                                              <SelectItem value="skip_next">Skip Next</SelectItem>
+                                            </SelectContent>
+                                          </Select>
+                                        </div>
+                                        <div>
+                                          <Label htmlFor="on-failure" className="text-sm font-medium">
+                                            On Failure
+                                          </Label>
+                                          <Select
+                                            value={stepSettings.conditions.onFailure}
+                                            onValueChange={(value) =>
+                                              setStepSettings({
+                                                ...stepSettings,
+                                                conditions: { ...stepSettings.conditions, onFailure: value },
+                                              })
+                                            }
+                                          >
+                                            <SelectTrigger className="mt-2">
+                                              <SelectValue />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                              <SelectItem value="retry">Retry</SelectItem>
+                                              <SelectItem value="fail">Fail</SelectItem>
+                                              <SelectItem value="continue">Continue</SelectItem>
+                                              <SelectItem value="manual_review">Manual Review</SelectItem>
+                                            </SelectContent>
+                                          </Select>
+                                        </div>
+                                        <div>
+                                          <Label htmlFor="on-timeout" className="text-sm font-medium">
+                                            On Timeout
+                                          </Label>
+                                          <Select
+                                            value={stepSettings.conditions.onTimeout}
+                                            onValueChange={(value) =>
+                                              setStepSettings({
+                                                ...stepSettings,
+                                                conditions: { ...stepSettings.conditions, onTimeout: value },
+                                              })
+                                            }
+                                          >
+                                            <SelectTrigger className="mt-2">
+                                              <SelectValue />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                              <SelectItem value="fail">Fail</SelectItem>
+                                              <SelectItem value="retry">Retry</SelectItem>
+                                              <SelectItem value="escalate">Escalate</SelectItem>
+                                              <SelectItem value="continue">Continue</SelectItem>
+                                            </SelectContent>
+                                          </Select>
                                         </div>
                                       </div>
+                                    </div>
 
-                                      {/* Integrations */}
-                                      <div className="space-y-6">
-                                        <h3 className="text-lg font-semibold text-slate-900 border-b pb-2">
-                                          Integrations
-                                        </h3>
-                                        <div className="flex flex-wrap gap-2">
-                                          {step.integrations.map((integration, idx) => (
-                                            <Badge key={idx} variant="outline" className="px-3 py-1">
-                                              {integration}
-                                            </Badge>
-                                          ))}
-                                        </div>
-                                        <p className="text-sm text-slate-600">
-                                          This step uses the integrations listed above. You can modify integration
-                                          settings in the main integrations page.
-                                        </p>
+                                    {/* Integrations */}
+                                    <div className="space-y-4">
+                                      <h3 className="text-lg font-semibold text-slate-900 border-b pb-2">
+                                        Integrations
+                                      </h3>
+                                      <div className="flex flex-wrap gap-2">
+                                        {step.integrations.map((integration, idx) => (
+                                          <Badge key={idx} variant="outline" className="px-3 py-1">
+                                            {integration}
+                                          </Badge>
+                                        ))}
                                       </div>
+                                      <p className="text-sm text-slate-600">
+                                        This step uses the integrations listed above. You can modify integration
+                                        settings in the main integrations page.
+                                      </p>
+                                    </div>
 
-                                      {/* Action Buttons */}
-                                      <div className="flex items-center justify-end gap-4 pt-6 border-t">
-                                        <Button variant="outline" onClick={() => setEditingStep(null)} className="px-6">
-                                          Cancel
-                                        </Button>
-                                        <Button
-                                          onClick={saveStepSettings}
-                                          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6"
-                                        >
-                                          <Save className="w-4 h-4 mr-2" />
-                                          Save Changes
-                                        </Button>
-                                      </div>
+                                    {/* Action Buttons */}
+                                    <div className="flex items-center justify-end gap-4 pt-4 border-t">
+                                      <Button variant="outline" onClick={() => setEditingStep(null)} className="px-6">
+                                        Cancel
+                                      </Button>
+                                      <Button
+                                        onClick={saveStepSettings}
+                                        className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6"
+                                      >
+                                        <Save className="w-4 h-4 mr-2" />
+                                        Save Changes
+                                      </Button>
                                     </div>
                                   </div>
                                 </DialogContent>
